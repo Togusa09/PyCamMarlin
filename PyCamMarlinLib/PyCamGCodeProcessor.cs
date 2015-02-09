@@ -88,7 +88,8 @@ namespace PyCamMarlinLib
                 {
                     modalCommand = commandCode;
                 }
-                else if (UseModalPrefix.Contains(firstChar))
+
+                if (UseModalPrefix.Contains(firstChar))
                 {
                     returnList.Add(modalCommand + " " + line);
                 }
