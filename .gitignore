@@ -199,3 +199,5 @@ FakesAssemblies/
 *.ide
 *.ide
 *.ide
+*.ide
+*.chk

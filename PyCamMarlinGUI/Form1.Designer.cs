@@ -79,6 +79,7 @@
             this.RemoveFile.TabIndex = 4;
             this.RemoveFile.Text = "Remove";
             this.RemoveFile.UseVisualStyleBackColor = true;
+            this.RemoveFile.Click += new System.EventHandler(this.RemoveFile_Click);
             // 
             // Form1
             // 

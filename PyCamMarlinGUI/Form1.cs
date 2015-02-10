@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System;   
 using System.Environment;
 using System.IO;
 using System.Linq;
@@ -20,7 +20,7 @@ namespace PyCamMarlinGUI
         {
             _currentDirectory = GetFolderPath(SpecialFolder.MyDocuments);
             //SourceFile.Text = docFolder;
-            OutputFile.Text = "output.gcode";
+            OutputFile.Text = @"output.gcode";
 
         }
 
@@ -29,22 +29,22 @@ namespace PyCamMarlinGUI
             openFileDialog1.InitialDirectory = _currentDirectory;
             //openFileDialog1.InitialDirectory = "C:\\";
 
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                var fileName = openFileDialog1.FileName;
-                //OutputFile.Text = Path.GetFileNameWithoutExtension(fileName) + "_updated" +
-                //    Path.GetExtension(fileName);
-                ImportFiles.Items.Add(fileName);
-                _currentDirectory = Path.GetDirectoryName(openFileDialog1.FileName);
-            }
+            if (openFileDialog1.ShowDialog() != DialogResult.OK) return;
+
+            var fileName = openFileDialog1.FileName;
+            //OutputFile.Text = Path.GetFileNameWithoutExtension(fileName) + "_updated" +
+            //    Path.GetExtension(fileName);
+            ImportFiles.Items.Add(fileName);
+            _currentDirectory = Path.GetDirectoryName(openFileDialog1.FileName);
         }
 
         private void ProcessFile_Click(object sender, EventArgs e)
         {
             var processor = new PyCamGCodeProcessor();
-            if (openFileDialog1.FileName == null) return;
 
-            string outputLocation = Path.Combine(Path.GetDirectoryName(openFileDialog1.FileName), OutputFile.Text);
+            var path = Path.GetDirectoryName(openFileDialog1.FileName);
+            if (path == null) return;
+            var outputLocation = Path.Combine(path, OutputFile.Text);
 
             var files = ImportFiles.Items.OfType<string>().ToList();
 
@@ -60,6 +60,14 @@ namespace PyCamMarlinGUI
             //        //fileStream.Flush();
             //    }
             //}
+        }
+
+        private void RemoveFile_Click(object sender, EventArgs e)
+        {
+            if (ImportFiles.SelectedItems.Count == 0) return;
+
+                foreach (var i in ImportFiles.SelectedItems.OfType<string>().ToList())
+                    ImportFiles.Items.Remove(i);
         }
     }
 }

@@ -154,7 +154,9 @@ namespace PyCamMarlinLib
                 return false;
             command = command.Trim();
 
-            return !(UnsupportedGCodes.Contains(command) || SkipPrefix.Contains(command.Substring(0, 1)));
+            var commandCode = command.Split(' ').First();
+
+            return !(UnsupportedGCodes.Contains(commandCode) || SkipPrefix.Contains(command.Substring(0, 1)));
         }
 
         protected void Log(string message)
