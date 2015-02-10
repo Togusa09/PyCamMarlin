@@ -69,5 +69,32 @@ namespace PyCamMarlinGUI
                 foreach (var i in ImportFiles.SelectedItems.OfType<string>().ToList())
                     ImportFiles.Items.Remove(i);
         }
+
+        private void FileUp_Click(object sender, EventArgs e)
+        {
+            // only if the first item isn't the current one
+            if (ImportFiles.SelectedIndex > 0)
+            {
+                // add a duplicate item up in the listbox
+                ImportFiles.Items.Insert(ImportFiles.SelectedIndex - 1, ImportFiles.Text);
+                // make it the current item
+                ImportFiles.SelectedIndex = (ImportFiles.SelectedIndex - 2);
+                // delete the old occurrence of this item
+                ImportFiles.Items.RemoveAt(ImportFiles.SelectedIndex + 2);
+            }
+        }
+
+        private void FileDown_Click(object sender, EventArgs e)
+        {
+            if ((ImportFiles.SelectedIndex != -1) && (ImportFiles.SelectedIndex < ImportFiles.Items.Count - 1))
+            {
+                // add a duplicate item down in the listbox
+                ImportFiles.Items.Insert(ImportFiles.SelectedIndex + 2, ImportFiles.Text);
+                // make it the current item
+                ImportFiles.SelectedIndex = ImportFiles.SelectedIndex + 2;
+                // delete the old occurrence of this item
+                ImportFiles.Items.RemoveAt(ImportFiles.SelectedIndex - 2);
+            }
+        }
     }
 }

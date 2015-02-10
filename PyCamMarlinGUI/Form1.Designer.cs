@@ -34,6 +34,8 @@
             this.ProcessFile = new System.Windows.Forms.Button();
             this.ImportFiles = new System.Windows.Forms.ListBox();
             this.RemoveFile = new System.Windows.Forms.Button();
+            this.FileUp = new System.Windows.Forms.Button();
+            this.FileDown = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // OutputFile
@@ -55,7 +57,7 @@
             // 
             // ProcessFile
             // 
-            this.ProcessFile.Location = new System.Drawing.Point(239, 115);
+            this.ProcessFile.Location = new System.Drawing.Point(239, 206);
             this.ProcessFile.Name = "ProcessFile";
             this.ProcessFile.Size = new System.Drawing.Size(75, 23);
             this.ProcessFile.TabIndex = 2;
@@ -81,11 +83,33 @@
             this.RemoveFile.UseVisualStyleBackColor = true;
             this.RemoveFile.Click += new System.EventHandler(this.RemoveFile_Click);
             // 
+            // FileUp
+            // 
+            this.FileUp.Location = new System.Drawing.Point(239, 84);
+            this.FileUp.Name = "FileUp";
+            this.FileUp.Size = new System.Drawing.Size(75, 23);
+            this.FileUp.TabIndex = 5;
+            this.FileUp.Text = "Up";
+            this.FileUp.UseVisualStyleBackColor = true;
+            this.FileUp.Click += new System.EventHandler(this.FileUp_Click);
+            // 
+            // FileDown
+            // 
+            this.FileDown.Location = new System.Drawing.Point(239, 114);
+            this.FileDown.Name = "FileDown";
+            this.FileDown.Size = new System.Drawing.Size(75, 23);
+            this.FileDown.TabIndex = 6;
+            this.FileDown.Text = "Down";
+            this.FileDown.UseVisualStyleBackColor = true;
+            this.FileDown.Click += new System.EventHandler(this.FileDown_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 255);
+            this.Controls.Add(this.FileDown);
+            this.Controls.Add(this.FileUp);
             this.Controls.Add(this.RemoveFile);
             this.Controls.Add(this.ImportFiles);
             this.Controls.Add(this.ProcessFile);
@@ -107,6 +131,8 @@
         private System.Windows.Forms.Button ProcessFile;
         private System.Windows.Forms.ListBox ImportFiles;
         private System.Windows.Forms.Button RemoveFile;
+        private System.Windows.Forms.Button FileUp;
+        private System.Windows.Forms.Button FileDown;
     }
 }
 
